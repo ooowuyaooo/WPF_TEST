@@ -5,8 +5,202 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Ediszhang" Height="800" Width="1250"
+        FontFamily="Microsoft YaHei" FontWeight="ExtraLight" FontSize="12"
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" AllowsTransparency="True" Background="{x:Null}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\Styles\DefaultStyle.xaml"/>
+                <ResourceDictionary>
+                    <Style TargetType="RadioButton" x:Key="NavButtonStyle">
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="RadioButton">
+                                    <Border Background="Transparent" CornerRadius="8" Name="back">
+                                        <ContentControl Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,4" FontSize="20"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter TargetName="back" Property="Background" Value="#44ffffff"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+            <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+            <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+            <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+            <ControlTemplate TargetType="{x:Type TextBox}" x:Key="SearchTextBoxTemplate">
+                <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="0" 
+                        Background="#11000000" 
+                        SnapsToDevicePixels="True"
+                        CornerRadius="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg" Height="20" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Search for what you needed" Grid.Column="1" VerticalAlignment="Center" Foreground="#44ffffff" 
+                                   Name="mt" Visibility="Hidden"/>
+                        <ScrollViewer x:Name="PART_ContentHost" 
+                                 Grid.Column="1"
+                                  Focusable="false" 
+                                  HorizontalScrollBarVisibility="Hidden" 
+                                  VerticalScrollBarVisibility="Hidden"
+                                  Background="Transparent"
+                                      VerticalAlignment="Center" Foreground="White"/>
+                    </Grid>
+                </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsEnabled" Value="false">
+                        <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                    </Trigger>
+                    <Trigger Property="IsKeyboardFocused" Value="true">
+                        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                    </Trigger>
+                    <DataTrigger Binding="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" Value="">
+                        <Setter TargetName="mt" Property="Visibility" Value="Visible"/>
+                    </DataTrigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
+
+                    <Storyboard x:Key="UserInfoStoryBoard"><!--定义滑动动画-->
+                        <DoubleAnimation Duration="0:0:0.2" To="0"
+                                         Storyboard.TargetName="tt"
+                                         Storyboard.TargetProperty="X"/>
+                    </Storyboard>
+                    <Storyboard x:Key="CloseUserInfoStoryBoard">
+                        <!--定义滑动动画-->
+                        <DoubleAnimation Duration="0:0:0.2" To="250"
+                                         Storyboard.TargetName="tt"
+                                         Storyboard.TargetProperty="X"/>
+                    </Storyboard>
+
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.Triggers><!--触发右侧滑动动画-->
+        <EventTrigger RoutedEvent="Button.Click" SourceName="btnUserInfo">
+            <BeginStoryboard Storyboard="{StaticResource UserInfoStoryBoard}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="btnCloseUserInfo">
+            <BeginStoryboard Storyboard="{StaticResource CloseUserInfoStoryBoard}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Border Margin="5" Background="White" CornerRadius="10" >
+        <Border.Effect>
+            <DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="5" Opacity="0.3" Direction="0"/>
+        </Border.Effect>
+        <Grid>
+            <Border Background="#004dfa" Height="200" VerticalAlignment="top" CornerRadius="10,10,0,0"
+                    MouseLeftButtonDown="Border_MouseLeftButtonDown"/> <!--窗口移动-->
+            <!--窗口控制按钮-->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <Button Height="40" Width="40" Template="{StaticResource WindowControlButtonTemplate1}"
+                        Click="Button_Click1"/>
+                <Button Height="40" Width="40" Template="{StaticResource WindowControlButtonTemplate2}"
+                        Click="Button_Click2"/>
+                <Button Height="40" Width="40" Template="{StaticResource WindowControlButtonTemplate}"
+                        Click="Button_Click3"/>
+            </StackPanel>
+            <Grid Margin="50,50">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="65" />
+                    <RowDefinition Height="35"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                    <StackPanel Margin="15,0,0,0">
+                        <TextBlock Text="Ediszhang test project" Foreground="White" FontSize="30"/>
+                        <TextBlock Text="Ediszhang" Foreground="#88dddddd" FontSize="20"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Border Width="40" Height="40" CornerRadius="20">
+                        <Border.Background>
+                            <ImageBrush ImageSource="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                        </Border.Background>
+                    </Border>
+                    <Button VerticalAlignment="Center" Cursor="Hand"
+                            Foreground="White" FontSize="30" Margin="10,0,0,0" Name="btnUserInfo">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <TextBlock Text="{Binding UserInfo.UserName}"/>
+                            </ControlTemplate><!--名字按钮显示可以调出滑动界面-->
+                        </Button.Template>
+                    </Button>
+                    
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <RadioButton Content="first1" Style="{StaticResource NavButtonStyle}" 
+                                 IsChecked="True" Command="{Binding NavChangedCommand}"
+                                 CommandParameter="FirstPageView"/>
+                    <RadioButton Content="seconnd1" Style="{StaticResource NavButtonStyle}" 
+                                 Command="{Binding NavChangedCommand}"
+                                 CommandParameter="SecondPageView"/>
+                    <RadioButton Content="first" Style="{StaticResource NavButtonStyle}" />
+                    <RadioButton Content="second" Style="{StaticResource NavButtonStyle}" />
+                    <RadioButton Content="third" Style="{StaticResource NavButtonStyle}" />
+                    <RadioButton Content="fourth" Style="{StaticResource NavButtonStyle}" />
+                    <RadioButton Content="fifth" Style="{StaticResource NavButtonStyle}" />
+                    <RadioButton Content="sixth" Style="{StaticResource NavButtonStyle}" />
+                    <RadioButton Content="seventh" Style="{StaticResource NavButtonStyle}" />
+                    <RadioButton Content="eighth" Style="{StaticResource NavButtonStyle}" />
+                </StackPanel>
+                <TextBox Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Width="300" Height="32" Template="{StaticResource SearchTextBoxTemplate}"/>
+                <ContentControl Grid.Row="2" Content="{Binding MainContent}"/>
+            </Grid>
+            
+            <!--抽屉侧滑栏-->
+            <Border Background="#ee444444" Width="240" HorizontalAlignment="Right" CornerRadius="0,5,5,0">
+                <Border.Effect>
+                    <DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="5" Opacity="0.3" Direction="180"/>
+                </Border.Effect>
+                <Border.RenderTransform>
+                    <TranslateTransform X="245" x:Name="tt"/>
+                </Border.RenderTransform>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="230"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                <Button Height="40" Width="40" Template="{StaticResource WindowControlButtonTemplate}"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Name="btnCloseUserInfo"/>
+                    <Border Width="80" Height="80" CornerRadius="40">
+                        <Border.Background>
+                            <ImageBrush ImageSource="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                        </Border.Background>
+                        
+                    </Border>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="用户名" FontSize="30" Foreground="White" Margin="0,0,20,0"/>
+                            <TextBlock Text="{Binding UserInfo.UserName}" FontSize="30" Foreground="White" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
 </Window>

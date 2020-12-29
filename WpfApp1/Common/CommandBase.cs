@@ -25,5 +25,6 @@ namespace WpfApp1.Common
 
         public Func<object,bool> DoCanExcute { get; set; }
 
+        
     }
 }
