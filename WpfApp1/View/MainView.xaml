@@ -167,7 +167,7 @@
             </Grid>
             
             <!--抽屉侧滑栏-->
-            <Border Background="#ee444444" Width="240" HorizontalAlignment="Right" CornerRadius="0,5,5,0">
+            <Border Background="#ee444444" Width="240" HorizontalAlignment="Right" CornerRadius="10,5,5,10">
                 <Border.Effect>
                     <DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="5" Opacity="0.3" Direction="180"/>
                 </Border.Effect>
@@ -179,7 +179,7 @@
                         <RowDefinition Height="230"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                <Button Height="40" Width="40" Template="{StaticResource WindowControlButtonTemplate}"
+                <Button Height="40" Width="40" Template="{StaticResource WindowControlButtonTemplateSliding}"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Name="btnCloseUserInfo"/>
                     <Border Width="80" Height="80" CornerRadius="40">
                         <Border.Background>

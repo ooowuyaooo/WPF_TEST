@@ -4,9 +4,299 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.View"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:con="clr-namespace:Controls;assembly=Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="1042" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" FontSize="20" Foreground="White"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="360"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="4">
+            <Border CornerRadius="5" Background="White" Margin="10">
+                <Border.Effect>
+                    <DropShadowEffect Color="#f2f2f2" ShadowDepth="10" BlurRadius="105" Opacity="0.4" Direction="270"/>
+                </Border.Effect>
+                <Grid>
+                    <lvc:CartesianChart Margin="0,0,0,45">
+                        <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Stroke="#fecc71" Fill="#fff2de"
+                                            PointGeometrySize="0"
+                                            Values="1,2,3,40,5,6,7"/>
+                        </lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis ShowLabels="False" MinValue="0" MaxValue="100"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="top" HorizontalAlignment="Left" Margin="15"><!--横向排列-->
+                        <Border Width="20" Height="20" Background="#edfaf0">
+                            <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                        </Border>
+                        <TextBlock Text="32%" VerticalAlignment="Center" Foreground="#7ada95" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="15,3">
+                        <Border Width="36" Height="36" Background="#fff5e9" CornerRadius="10">
+                            <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15,0,0,0">
+                            <TextBlock Text="监控数据一" Foreground="#3f4c5d"/>
+                            <TextBlock Text="32%" Foreground="#3f4c5d" FontWeight="Bold"/>
+                        </StackPanel>
+                        
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Border CornerRadius="5" Background="White" Margin="10">
+                <Border.Effect>
+                    <DropShadowEffect Color="#f2f2f2" ShadowDepth="10" BlurRadius="105" Opacity="0.4" Direction="270"/>
+                </Border.Effect>
+                <Grid>
+                    <lvc:CartesianChart Margin="0,0,0,45">
+                        <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Stroke="#ff7261" Fill="#ffe3e0"
+                                            PointGeometrySize="0"
+                                            Values="1,20,3,40,5,6,7"/>
+                        </lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis ShowLabels="False" MinValue="0" MaxValue="100"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="top" HorizontalAlignment="Left" Margin="15">
+                        <!--横向排列-->
+                        <Border Width="20" Height="20" Background="#edfaf0">
+                            <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                        </Border>
+                        <TextBlock Text="32%" VerticalAlignment="Center" Foreground="#7ada95" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="15,3">
+                        <Border Width="36" Height="36" Background="#fff5e9" CornerRadius="10">
+                            <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15,0,0,0">
+                            <TextBlock Text="监控数据一" Foreground="#3f4c5d"/>
+                            <TextBlock Text="32%" Foreground="#3f4c5d" FontWeight="Bold"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Border CornerRadius="5" Background="White" Margin="10">
+                <Border.Effect>
+                    <DropShadowEffect Color="#f2f2f2" ShadowDepth="10" BlurRadius="105" Opacity="0.4" Direction="270"/>
+                </Border.Effect>
+                <Grid>
+                    <lvc:CartesianChart Margin="0,0,0,45">
+                        <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Stroke="Blue" Fill="#fff2de"
+                                            PointGeometrySize="0"
+                                            Values="1,2,3,40,5,60,7"/>
+                        </lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis ShowLabels="False" MinValue="0" MaxValue="100"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="top" HorizontalAlignment="Left" Margin="15">
+                        <!--横向排列-->
+                        <Border Width="20" Height="20" Background="#edfaf0">
+                            <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                        </Border>
+                        <TextBlock Text="32%" VerticalAlignment="Center" Foreground="#7ada95" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="15,3">
+                        <Border Width="36" Height="36" Background="#fff5e9" CornerRadius="10">
+                            <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15,0,0,0">
+                            <TextBlock Text="监控数据一" Foreground="#3f4c5d"/>
+                            <TextBlock Text="32%" Foreground="#3f4c5d" FontWeight="Bold"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Border CornerRadius="5" Background="White" Margin="10">
+                <Border.Effect>
+                    <DropShadowEffect Color="#f2f2f2" ShadowDepth="10" BlurRadius="105" Opacity="0.4" Direction="270"/>
+                </Border.Effect>
+                <Grid>
+                    <lvc:CartesianChart Margin="0,0,0,45">
+                        <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Stroke="Purple" Fill="#fff2de"
+                                            PointGeometrySize="0"
+                                            Values="10,2,3,40,5,6,70"/>
+                        </lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis ShowLabels="False" MinValue="0" MaxValue="100"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="top" HorizontalAlignment="Left" Margin="15">
+                        <!--横向排列-->
+                        <Border Width="20" Height="20" Background="#edfaf0">
+                            <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                        </Border>
+                        <TextBlock Text="32%" VerticalAlignment="Center" Foreground="#7ada95" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="15,3">
+                        <Border Width="36" Height="36" Background="#fff5e9" CornerRadius="10">
+                            <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15,0,0,0">
+                            <TextBlock Text="监控数据一" Foreground="#3f4c5d"/>
+                            <TextBlock Text="32%" Foreground="#3f4c5d" FontWeight="Bold"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </UniformGrid>
+        <Grid Grid.Row="1" Margin="10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--访问情况监控-->
+            <Grid Margin="0,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="访问情况监控" Foreground="#3f4c5d" VerticalAlignment="Center"
+                           FontSize="15" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Hyperlink>详情</Hyperlink>
+                </TextBlock>
+                <Border CornerRadius="5" Background="White" Grid.Row="1">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#f2f2f2" ShadowDepth="10" BlurRadius="105" Opacity="0.4" Direction="270"/>
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
+                            <TextBlock Text="当前使用率" FontSize="14" Foreground="#3f4c5d"/>
+                            <TextBlock Text="120%" FontSize="18" FontWeight="Bold" Foreground="#3f4c5d" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="top" HorizontalAlignment="Left" Margin="5">
+                                <!--横向排列-->
+                                <Border Width="20" Height="20" Background="#edfaf0">
+                                    <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                                </Border>
+                                <TextBlock Text="32%" VerticalAlignment="Center" Foreground="#7ada95" Margin="5,0,0,0"/>
+                            </StackPanel>
+                            <TextBlock Text="最高使用率" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#3f4c5d"/>
+                        </StackPanel>
+                        <lvc:CartesianChart Margin="10" Grid.Column="1">
+                            <lvc:CartesianChart.Series>
+                                <lvc:LineSeries Stroke="#3bc8d7" Fill="#e1f2f6"
+                                            PointGeometrySize="0"
+                                            Values="10,20,30,40,50,60,7"/>
+                            </lvc:CartesianChart.Series>
+                            <lvc:CartesianChart.AxisX>
+                                <lvc:Axis ShowLabels="False"/>
+                            </lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart.AxisY>
+                                <lvc:Axis ShowLabels="True" MinValue="0" MaxValue="100"/>
+                            </lvc:CartesianChart.AxisY>
+                        </lvc:CartesianChart>
+
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!--项目简介-->
+            <Grid Grid.Row="1" Margin="0,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="项目简介" Foreground="#3f4c5d" VerticalAlignment="Center"
+                           FontSize="15" FontWeight="Bold"/>
+                <Border Grid.Row="1" Background="CadetBlue" CornerRadius="10">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#f2f2f2" ShadowDepth="10" BlurRadius="105" Opacity="0.4" Direction="270"/>
+                    </Border.Effect>
+                    <TextBlock Text="Here is for Example" FontSize="40" FontWeight="ExtraBold"
+                               Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                </Border>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.RowSpan="2"><!--rowspan并行-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="指针仪表数据监控" Foreground="#3f4c5d" VerticalAlignment="Center"
+                           FontSize="15" FontWeight="Bold" Margin="10,0,0,0"/>
+                <Border Grid.Row="1" Margin="10,0,0,0" CornerRadius="10">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="#FFBDF3C7" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect Color="#f2f2f2" ShadowDepth="10" BlurRadius="105" Opacity="0.4" Direction="270"/>
+                    </Border.Effect>
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="top" HorizontalAlignment="Left" Margin="15">
+                            <!--横向排列-->
+                            <Border Width="20" Height="20" Background="#edfaf0">
+                                <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                            </Border>
+                            <TextBlock Text="32%" VerticalAlignment="Center" Foreground="Red" Margin="5,0,0,0"/>
+                            
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30,0,0,20">
+                            <TextBlock Text="当前使用率" FontSize="14" Foreground="#3f4c5d"/>
+                            <TextBlock Text="120%" FontSize="18" FontWeight="Bold" Foreground="#3f4c5d" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="right" VerticalAlignment="Bottom" Margin="0,0,30,20">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="top" HorizontalAlignment="Left" Margin="5">
+                                <!--横向排列-->
+                                <Border Width="20" Height="20" Background="#edfaf0">
+                                    <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                                </Border>
+                                <TextBlock Text="32%" VerticalAlignment="Center" Foreground="#7ada95" Margin="5,0,0,0"/>
+                            </StackPanel>
+                            <TextBlock Text="最高使用率" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#3f4c5d"/>
+                        </StackPanel>
+
+
+
+
+                        <con:Instrument Margin="0,20,0,40"
+                                        Value="{Binding InstrumentValue}"
+                                        Mininum="-20"
+                                        Maxinum="80"
+                                        Interval="10"
+                                       />
+                    </Grid>
+                    
+                </Border>
+            </Grid>
+        </Grid>
+
     </Grid>
 </UserControl>

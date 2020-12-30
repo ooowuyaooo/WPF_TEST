@@ -40,4 +40,17 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+    <ControlTemplate TargetType="Button" x:Key="WindowControlButtonTemplateSliding">
+        <Border Background="Transparent" Name="back" CornerRadius="10,0,0,0">
+            <Path Data="M0 0 12 12M0 12 12 0" Stroke="White" StrokeThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter TargetName="back" Property="Background" Value="#2222ff"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="back" Property="Background" Value="#4444ff"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 </ResourceDictionary>
