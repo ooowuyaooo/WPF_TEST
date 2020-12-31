@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Ediszhang" Height="800" Width="1250"
+        Title="Ediszhang" Height="900" Width="1250"
         FontFamily="Microsoft YaHei" FontWeight="ExtraLight" FontSize="12"
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None" AllowsTransparency="True" Background="{x:Null}">

@@ -4,9 +4,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
 using MySql.Data.MySqlClient;
 using WpfApp1.Common;
 using WpfApp1.DataAccess.DataEntity;
+using WpfApp1.Model;
 
 namespace WpfApp1.DataAccess
 {
@@ -57,6 +61,7 @@ namespace WpfApp1.DataAccess
             }
             catch
             {
+                
                 return false;
             }
             
@@ -103,6 +108,76 @@ namespace WpfApp1.DataAccess
                         
                     } 
             }catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.Dispose();
+            }
+            return null;
+        }
+
+        public List<CourseSeriesModel> GetCoursePlayRecord()
+        {
+            try
+            {
+                List<CourseSeriesModel> cModelList = new List<CourseSeriesModel>();
+                if (DBConnection())
+                {
+                    string userSql = @"select a.course_name, a.course_id ,b.play_count,b.is_growing ,b.growing_rate ,c.platform_name from course a
+left join play_record b
+on a.course_id = b.course_id
+left join platforms c
+on b.platform_id = c.platform_id
+order by a.course_id,c.platform_id";
+                    adapter = new MySqlDataAdapter(userSql, conn);
+                    
+
+                    DataTable table = new DataTable();
+                    int count = adapter.Fill(table);
+
+                    string courseID = "";
+                    CourseSeriesModel cModel = null;
+                    
+                    foreach(DataRow dr in table.AsEnumerable())
+                    {
+                        string tempID = dr.Field<string>("course_id");
+                        if (courseID != tempID)
+                        {
+                            courseID = tempID;
+                            cModel = new CourseSeriesModel();
+                            cModelList.Add(cModel);
+
+                            cModel.CourseName = dr.Field<string>("course_name");
+                            cModel.SeriesCollection = new LiveCharts.SeriesCollection();
+                            cModel.SeriesList = new System.Collections.ObjectModel.ObservableCollection<SeriesModel>();
+
+                        }
+
+                        if(cModel!=null)
+                        {
+                            cModel.SeriesCollection.Add(new PieSeries
+                            {
+                                Title = dr.Field<string>("platform_name"),
+                                Values = new ChartValues<ObservableValue> { new ObservableValue((double)dr.Field<decimal>("play_count")) },
+                                DataLabels=false
+                            });
+
+                            cModel.SeriesList.Add(new SeriesModel 
+                            {
+                                SeriesName = dr.Field<string>("platform_name"),
+                                CurrentValue = dr.Field<decimal>("play_count"),
+                                IsGrowing = dr.Field<Int32>("is_growing") == 1,
+                                ChangeRate = (int)dr.Field<decimal>("growing_rate")
+                            });
+                        }
+                    }
+
+                }
+                return cModelList;
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
