@@ -108,8 +108,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Convertor\BoolToArrowConvertor.cs" />
+    <Compile Include="Model\CategoryItemModel.cs" />
     <Compile Include="Model\CourseSeriesModel.cs" />
     <Compile Include="Model\SeriesModel.cs" />
+    <Compile Include="ViewModel\CoursePageViewModel.cs" />
     <Compile Include="ViewModel\FirstPageViewModel.cs" />
     <Compile Include="View\SecondPageView.xaml.cs">
       <DependentUpon>SecondPageView.xaml</DependentUpon>
