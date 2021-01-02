@@ -12,7 +12,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\Styles\DefaultStyle.xaml"/>
+                <ResourceDictionary Source="../Asset/Styles/DefaultStyle.xaml"/>
                 <ResourceDictionary>
                     <Style TargetType="RadioButton" x:Key="NavButtonStyle">
                         <Setter Property="Foreground" Value="White"/>
@@ -127,10 +127,10 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <Image Source="../Asset/images/1.jpg"/>
+                    <Image Source="../Asset/images/yztech.jpg"/>
                     <StackPanel Margin="15,0,0,0">
-                        <TextBlock Text="Ediszhang test project" Foreground="White" FontSize="30"/>
-                        <TextBlock Text="Ediszhang" Foreground="#88dddddd" FontSize="20"/>
+                        <TextBlock Text="Data Management System" Foreground="White" FontSize="30"/>
+                        <TextBlock Text="Designed by Ediszhang" Foreground="#88dddddd" FontSize="20"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
@@ -151,21 +151,19 @@
 
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <RadioButton Content="first1" Style="{StaticResource NavButtonStyle}" 
+                <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+                    <RadioButton Content="Dashboard" Style="{StaticResource NavButtonStyle}" 
                                  IsChecked="True" Command="{Binding NavChangedCommand}"
                                  CommandParameter="FirstPageView"/>
-                    <RadioButton Content="seconnd1" Style="{StaticResource NavButtonStyle}" 
+                    <RadioButton Content="Details" Style="{StaticResource NavButtonStyle}" 
                                  Command="{Binding NavChangedCommand}"
                                  CommandParameter="SecondPageView"/>
-                    <RadioButton Content="first" Style="{StaticResource NavButtonStyle}" />
-                    <RadioButton Content="second" Style="{StaticResource NavButtonStyle}" />
-                    <RadioButton Content="third" Style="{StaticResource NavButtonStyle}" />
-                    <RadioButton Content="fourth" Style="{StaticResource NavButtonStyle}" />
-                    <RadioButton Content="fifth" Style="{StaticResource NavButtonStyle}" />
-                    <RadioButton Content="sixth" Style="{StaticResource NavButtonStyle}" />
-                    <RadioButton Content="seventh" Style="{StaticResource NavButtonStyle}" />
-                    <RadioButton Content="eighth" Style="{StaticResource NavButtonStyle}" />
+                    <RadioButton Content="Alarm" Style="{StaticResource NavButtonStyle}" />
+                    <RadioButton Content="Hisory" Style="{StaticResource NavButtonStyle}" />
+                    <RadioButton Content="Calibaration" Style="{StaticResource NavButtonStyle}" />
+                    <RadioButton Content="Configuration" Style="{StaticResource NavButtonStyle}" />
+                    <RadioButton Content="Data" Style="{StaticResource NavButtonStyle}" />
+                    <RadioButton Content="Contact" Style="{StaticResource NavButtonStyle}" />
                 </StackPanel>
                 <TextBox Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Width="300" Height="32" Template="{StaticResource SearchTextBoxTemplate}"/>
                 <ContentControl Grid.Row="2" Content="{Binding MainContent}"/>
