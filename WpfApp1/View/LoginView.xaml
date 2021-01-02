@@ -75,7 +75,7 @@
                                            FontSize="30"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
-                                           Foreground="Blue"/>
+                                           Foreground="gray"/>
                                 <ScrollViewer x:Name="PART_ContentHost" 
                                               Grid.Column="1" 
                                               Focusable="false" 
@@ -140,7 +140,7 @@
                                            FontSize="30"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
-                                           Foreground="Blue"/>
+                                           Foreground="gray"/>
                                 <ScrollViewer x:Name="PART_ContentHost" 
                                               Grid.Column="1" 
                                               Focusable="false" 
@@ -205,7 +205,7 @@
                                            FontSize="30"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
-                                           Foreground="Blue"/>
+                                           Foreground="Gray"/>
                                 <ScrollViewer x:Name="PART_ContentHost" 
                                               Grid.Column="1" 
                                               Focusable="false" 
@@ -213,7 +213,7 @@
                                               VerticalScrollBarVisibility="Hidden"
                                               VerticalAlignment="Center"
                                               MinHeight="20"/>
-                                <Image Source="../Asset/images/1.jpg" Grid.Column="2"/>
+                                <Image Source="../Asset/images/validation.jpg" Grid.Column="2"/>
                             </Grid>
                            
                         </Border>
@@ -266,9 +266,9 @@
             
 
             <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,20">
-                <Border Width="100" Height="100" Margin="0,0,0,10">
+                <Border Width="200" Height="80" Margin="0,0,0,10">
                     <Border.Background>
-                        <ImageBrush ImageSource="../Asset/images/1.jpg"/>
+                        <ImageBrush ImageSource="../Asset/images/yztech.jpg"/>
                     </Border.Background>
                 </Border>
                 <TextBlock Text="Wilkommen!!" HorizontalAlignment="Center" FontSize="30" FontStyle="Oblique" Foreground="White"/>

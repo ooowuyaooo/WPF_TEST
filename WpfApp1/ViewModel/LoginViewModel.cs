@@ -81,7 +81,7 @@ namespace WpfApp1.ViewModel
                 this.ShowProgress = Visibility.Collapsed;
                 return;
             }
-            if (LoginModel.ValidationCode.ToLower() != "abcd")
+            if (LoginModel.ValidationCode.ToLower() != "7364")
             {
                 this.ErrorMessage = "FAULT VALIDATION CODE";
                 this.ShowProgress = Visibility.Collapsed;

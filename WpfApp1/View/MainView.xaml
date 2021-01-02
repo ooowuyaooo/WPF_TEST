@@ -45,7 +45,12 @@
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                                <Image Source="../Asset/images/1.jpg" Height="20" HorizontalAlignment="Center"/>
+                                <TextBlock Text="&#xe62e;"
+                                           FontFamily="../Asset/Fonts/#iconfont"
+                                           FontSize="20"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="Gray"/>
                         <TextBlock Text="Search for what you needed" Grid.Column="1" VerticalAlignment="Center" Foreground="#44ffffff" 
                                    Name="mt" Visibility="Hidden"/>
                         <ScrollViewer x:Name="PART_ContentHost" 
