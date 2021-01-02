@@ -45,7 +45,7 @@
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg" Height="20" HorizontalAlignment="Center"/>
+                                <Image Source="../Asset/images/1.jpg" Height="20" HorizontalAlignment="Center"/>
                         <TextBlock Text="Search for what you needed" Grid.Column="1" VerticalAlignment="Center" Foreground="#44ffffff" 
                                    Name="mt" Visibility="Hidden"/>
                         <ScrollViewer x:Name="PART_ContentHost" 
@@ -122,7 +122,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <Image Source="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                    <Image Source="../Asset/images/1.jpg"/>
                     <StackPanel Margin="15,0,0,0">
                         <TextBlock Text="Ediszhang test project" Foreground="White" FontSize="30"/>
                         <TextBlock Text="Ediszhang" Foreground="#88dddddd" FontSize="20"/>
@@ -131,7 +131,7 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Border Width="40" Height="40" CornerRadius="20">
                         <Border.Background>
-                            <ImageBrush ImageSource="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                            <ImageBrush ImageSource="../Asset/images/1.jpg"/>
                         </Border.Background>
                     </Border>
                     <Button VerticalAlignment="Center" Cursor="Hand"
@@ -183,7 +183,7 @@
                         HorizontalAlignment="Left" VerticalAlignment="Top" Name="btnCloseUserInfo"/>
                     <Border Width="80" Height="80" CornerRadius="40">
                         <Border.Background>
-                            <ImageBrush ImageSource="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\images\1.jpg"/>
+                            <ImageBrush ImageSource="../Asset/images/1.jpg"/>
                         </Border.Background>
                         
                     </Border>
