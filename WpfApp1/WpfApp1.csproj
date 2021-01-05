@@ -109,6 +109,7 @@
     </ApplicationDefinition>
     <Compile Include="Convertor\BoolToArrowConvertor.cs" />
     <Compile Include="Model\CategoryItemModel.cs" />
+    <Compile Include="Model\CourseModel.cs" />
     <Compile Include="Model\CourseSeriesModel.cs" />
     <Compile Include="Model\SeriesModel.cs" />
     <Compile Include="ViewModel\CoursePageViewModel.cs" />

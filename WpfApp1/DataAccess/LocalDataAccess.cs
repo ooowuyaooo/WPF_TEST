@@ -75,7 +75,7 @@ namespace WpfApp1.DataAccess
                 {
                     string userSql = "select * from users where user_name=@username and password=@pwd and is_validation=1";
                     adapter = new MySqlDataAdapter(userSql, conn);
-                    adapter.SelectCommand.Parameters.Add(new MySqlParameter("@user_name", MySqlDbType.VarChar)
+                    adapter.SelectCommand.Parameters.Add(new MySqlParameter("@username", MySqlDbType.VarChar)
                     {
                         Value =
                         userName
@@ -83,27 +83,28 @@ namespace WpfApp1.DataAccess
                     adapter.SelectCommand.Parameters.Add(new MySqlParameter("@pwd", MySqlDbType.VarChar)
                     {
                         Value =
-                        MD5Provider.GetMD5String(pwd + "@" + userName)
+                        //MD5Provider.GetMD5String(pwd + "@" + userName)
+                        pwd
                     }); ;
 
                     DataTable table = new DataTable();
                     int count = adapter.Fill(table);
 
-                    //if (count <= 0)
-                    //    throw new Exception("用户名密码不正确");
+                    if (count <= 0)
+                        throw new Exception("用户名密码不正确");
 
-                    //DataRow dr = table.Rows[0];
-                    //if (dr.Field<Int32>("is_can_login") == 0)
-                    //    throw new Exception("当前用户无权限");
+                    DataRow dr = table.Rows[0];
+                    if (dr.Field<Int32>("is_can_login") == 0)
+                        throw new Exception("当前用户无权限");
 
 
                     UserEntity userInfo = new UserEntity();
-                    //userInfo.UserName = dr.Field<string>("user_name");
-                    //userInfo.RealName = dr.Field<string>("real_name");
-                    //userInfo.Password = dr.Field<string>("password");
-                    userInfo.UserName = "admin";
-                    userInfo.RealName = "EdisZhang";
-                    userInfo.Password = "123456";
+                    userInfo.UserName = dr.Field<string>("user_name");
+                    userInfo.RealName = dr.Field<string>("real_name");
+                    userInfo.Password = dr.Field<string>("password");
+                    //userInfo.UserName = "admin";
+                    //userInfo.RealName = "EdisZhang";
+                    //userInfo.Password = "123456";
                     return userInfo;
                         
                     } 
@@ -185,7 +186,109 @@ order by a.course_id,c.platform_id";
             {
                 this.Dispose();
             }
-            return null;
+            
+        }
+
+        public List<string> GetTeachers()
+        {
+            try
+            {
+                List<string> result = new List<string>();
+                if (this.DBConnection())
+                {
+                    string sql = "select real_name from users where is_teacher=1";
+                    adapter = new MySqlDataAdapter(sql, conn);
+
+
+                    DataTable table = new DataTable();
+                    int count = adapter.Fill(table);
+                    if (count > 0)
+                    {
+                        result = table.AsEnumerable().Select(c => c.Field<string>("real_name")).ToList();
+
+                    }
+                }
+
+                return result;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                this.Dispose();
+            }
+        }
+
+
+        public List<CourseModel> GetCourses()
+        {
+            try
+            {
+                List<CourseModel> result = new List<CourseModel>();
+                if (this.DBConnection())
+                {
+                    string sql = @"select a.course_id,a.course_url ,a.course_name ,a.course_cover, a.description,c.real_name from course a
+left join course_teacher_relation b
+ON a.course_id=b.course_id
+left join users c
+on b.teacher_id=c.user_id
+ORDER BY a.course_id
+";
+                    adapter = new MySqlDataAdapter(sql, conn);
+
+
+                    DataTable table = new DataTable();
+                    int count = adapter.Fill(table);
+                    if (count > 0)
+                    {
+                        string courseId = "";
+                        CourseModel model = null;
+
+                        foreach(DataRow dr in table.AsEnumerable())
+                        {
+                            string tempId = dr.Field<string>("course_id");
+                            if (courseId != tempId)
+                            {
+                                courseId = tempId;
+                                model = new CourseModel();
+                                model.CourseName = dr.Field<string>("course_name");
+                                model.Cover = dr.Field<string>("course_cover");
+                                model.Url = dr.Field<string>("course_url");
+                                model.Description = dr.Field<string>("description");
+                                model.Teachers = new List<string>();
+
+                                result.Add(model);
+                            }
+                            if (model != null)
+                            {
+                                model.Teachers.Add(dr.Field<string>("real_name"));
+                            }
+                        }
+
+
+                        
+
+                    }
+                }
+
+                return result;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                this.Dispose();
+            }
         }
     }
+
+
+
+
 }
