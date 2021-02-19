@@ -206,5 +206,8 @@
   <ItemGroup>
     <Resource Include="Asset\images\validation.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\images\bonfigloili_logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

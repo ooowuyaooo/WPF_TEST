@@ -67,41 +67,41 @@ namespace WpfApp1.DataAccess
             
         }
 
-        public UserEntity CheckUserInfo(string userName,string pwd)
+        public UserEntity CheckUserInfo(string userName)
         {
 
             try {
                 if (DBConnection())
                 {
-                    string userSql = "select * from users where user_name=@username and password=@pwd and is_validation=1";
+                    string userSql = "select * from users where user_name=@username ";
                     adapter = new MySqlDataAdapter(userSql, conn);
                     adapter.SelectCommand.Parameters.Add(new MySqlParameter("@username", MySqlDbType.VarChar)
                     {
                         Value =
                         userName
                     });
-                    adapter.SelectCommand.Parameters.Add(new MySqlParameter("@pwd", MySqlDbType.VarChar)
-                    {
-                        Value =
-                        //MD5Provider.GetMD5String(pwd + "@" + userName)
-                        pwd
-                    }); ;
+                    //adapter.SelectCommand.Parameters.Add(new MySqlParameter("@pwd", MySqlDbType.VarChar)
+                    //{
+                    //    Value =
+                    //    //MD5Provider.GetMD5String(pwd + "@" + userName)
+                    //    pwd
+                    //}); ;
 
                     DataTable table = new DataTable();
                     int count = adapter.Fill(table);
 
                     if (count <= 0)
-                        throw new Exception("用户名密码不正确");
+                        throw new Exception("找不到产品号码，请联系工艺工程师！！！");
 
                     DataRow dr = table.Rows[0];
-                    if (dr.Field<Int32>("is_can_login") == 0)
-                        throw new Exception("当前用户无权限");
+                    //if (dr.Field<Int32>("is_can_login") == 0)
+                    //    throw new Exception("当前用户无权限");
 
 
                     UserEntity userInfo = new UserEntity();
                     userInfo.UserName = dr.Field<string>("user_name");
-                    userInfo.RealName = dr.Field<string>("real_name");
-                    userInfo.Password = dr.Field<string>("password");
+                    //userInfo.RealName = dr.Field<string>("real_name");
+                    //userInfo.Password = dr.Field<string>("password");
                     //userInfo.UserName = "admin";
                     //userInfo.RealName = "EdisZhang";
                     //userInfo.Password = "123456";

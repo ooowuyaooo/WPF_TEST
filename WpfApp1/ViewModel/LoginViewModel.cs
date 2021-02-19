@@ -62,36 +62,37 @@ namespace WpfApp1.ViewModel
         private void DoLogin(object o)
         {
             this.ShowProgress = Visibility.Visible;
-            this.ErrorMessage = "登陆成功，页面跳转中！";
+            this.ErrorMessage = "查询中.....";
             if (string.IsNullOrEmpty(LoginModel.UserName))
             {
-                this.ErrorMessage = "请输入用户名！";
+                this.ErrorMessage = "找不到产品号码，请联系工艺工程师！！！";
                 this.ShowProgress = Visibility.Collapsed;
                 return;
             }
-            if (string.IsNullOrEmpty(LoginModel.Password))
-            {
-                this.ErrorMessage = "请输入密码！";
-                this.ShowProgress = Visibility.Collapsed;
-                return;
-            }
-            if (string.IsNullOrEmpty(LoginModel.ValidationCode))
-            {
-                this.ErrorMessage = "请输入验证码！";
-                this.ShowProgress = Visibility.Collapsed;
-                return;
-            }
-            if (LoginModel.ValidationCode.ToLower() != "7364")
-            {
-                this.ErrorMessage = "验证码不正确！";
-                this.ShowProgress = Visibility.Collapsed;
-                return;
-            }
+            
+            //if (string.IsNullOrEmpty(LoginModel.Password))
+            //{
+            //    this.ErrorMessage = "请输入密码！";
+            //    this.ShowProgress = Visibility.Collapsed;
+            //    return;
+            //}
+            //if (string.IsNullOrEmpty(LoginModel.ValidationCode))
+            //{
+            //    this.ErrorMessage = "请输入验证码！";
+            //    this.ShowProgress = Visibility.Collapsed;
+            //    return;
+            //}
+            //if (LoginModel.ValidationCode.ToLower() != "7364")
+            //{
+            //    this.ErrorMessage = "验证码不正确！";
+            //    this.ShowProgress = Visibility.Collapsed;
+            //    return;
+            //}
 
             Task.Run(new Action(() => {
             try
             {
-                var user = LocalDataAccess.GetInstance().CheckUserInfo(LoginModel.UserName, LoginModel.Password);
+                var user = LocalDataAccess.GetInstance().CheckUserInfo(LoginModel.UserName);
                 if (user == null)
                 {
                     throw new Exception("登陆失败，账户密码不正确！");
