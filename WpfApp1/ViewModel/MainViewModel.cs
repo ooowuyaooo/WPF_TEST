@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using WpfApp1.Common;
 using WpfApp1.Model;
+using MoonPdfLib.MuPdf;
 
 namespace WpfApp1.ViewModel
 {
@@ -16,6 +17,9 @@ namespace WpfApp1.ViewModel
         public UserModel UserInfo { get; set; }
 
         private string _searchText;
+
+
+        public CommandBase CloseWindowCommand { get; set; }
 
         public string SearchText
         {
@@ -39,7 +43,10 @@ namespace WpfApp1.ViewModel
             this.NavChangedCommand.DoExcute = new Action<object>(DoNavChanged);
             this.NavChangedCommand.DoCanExcute= new Func<object,bool>((o)=>true);
 
-            DoNavChanged("FirstPageView");  //直接打开首页
+            //DoNavChanged("FirstPageView");  //直接打开首页
+
+
+           
         }
 
         private void DoNavChanged(object obj)
@@ -48,6 +55,8 @@ namespace WpfApp1.ViewModel
             ConstructorInfo cti = type.GetConstructor(System.Type.EmptyTypes);
             this.MainContent = (FrameworkElement)cti.Invoke(null);
         }
+
+        
 
 
     }

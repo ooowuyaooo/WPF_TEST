@@ -43,10 +43,54 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+        
 
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
         <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <ControlTemplate TargetType="{x:Type TextBox}" x:Key="SearchTextBoxTemplate">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="0" 
+                        Background="#11000000" 
+                        SnapsToDevicePixels="True"
+                        CornerRadius="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="&#xe62e;"
+                                           FontFamily="../Asset/Fonts/#iconfont"
+                                           FontSize="20"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="Gray"/>
+                    <TextBlock Text="输入产品号码..." Grid.Column="1" VerticalAlignment="Center" Foreground="Gray" 
+                                   Name="mt" Visibility="Hidden"/>
+                    <ScrollViewer x:Name="PART_ContentHost" 
+                                 Grid.Column="1"
+                                  Focusable="false" 
+                                  HorizontalScrollBarVisibility="Hidden" 
+                                  VerticalScrollBarVisibility="Hidden"
+                                  Background="Transparent"
+                                      VerticalAlignment="Center" Foreground="White"/>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                </Trigger>
+                <DataTrigger Binding="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" Value="">
+                    <Setter TargetName="mt" Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
         <Style x:Key="UserNameTextBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
             <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
@@ -248,7 +292,7 @@
         </Border.Effect>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1.8*"/>
+                <RowDefinition Height="1.2*"/>
                 <RowDefinition Height="3*"/>
 
             </Grid.RowDefinitions>
@@ -257,7 +301,7 @@
                      
                      Height="5"
                      IsIndeterminate="true" 
-                     Visibility="{Binding ShowProgress}" Margin="0,0,0,326" Grid.Row="1" />
+                     Visibility="{Binding ShowProgress}" Margin="0,164,0.4,421.4" Grid.RowSpan="2" />
             <Button VerticalAlignment="Top" HorizontalAlignment="Right" Width="30" Height="30" Template="{StaticResource CloseButtonTemplate}"
                     Command="{Binding CloseWindowCommand}"
                     CommandParameter="{Binding ElementName=window}">
@@ -282,6 +326,8 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition MinHeight="23" Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition MinHeight="5" Height="auto"/>
 
                 </Grid.RowDefinitions>
 
@@ -295,11 +341,12 @@
                          TextChanged="TextBox_TextChanged_1"
                          Name="txtUserName"
                          Grid.Row="1" Width="300"  HorizontalAlignment="Center" Margin="0,10,0,10"
+                         Template="{StaticResource SearchTextBoxTemplate}"
                          >
 
                 </TextBox>
 
-                <Button Content="Enter" Grid.Row="2" Height="40" Template="{StaticResource LoginButtonTemplate}"
+                <Button Content="Search" Grid.Row="2" Height="40" Template="{StaticResource LoginButtonTemplate}"
                         Command="{Binding LoginCommand}"
                         CommandParameter="{Binding ElementName=window}" HorizontalAlignment="Center" Width="300" Margin="0,10,0,10"
                         />
@@ -308,6 +355,30 @@
                            LineHeight="20"
                          FontFamily="D:\C#asp.Net core workplace\WpfApp1\WpfApp1\Asset\Fonts\iconfont.ttf"
                            HorizontalAlignment="Center" Margin="0,10,0,10" />
+                <!--
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Enter"  Grid.Column="1" Height="40" Template="{StaticResource LoginButtonTemplate}"
+                        Command="{Binding LoginCommand1}"
+                        CommandParameter="{Binding ElementName=window}" HorizontalAlignment="Center" Width="300" Margin="0,10,10,10" Visibility="{Binding ShowProgress1}"
+                        />
+                    <Button Content="Back" Grid.Column="2" Height="40" Template="{StaticResource LoginButtonTemplate}"
+                        Command="{Binding LoginCommand}"
+                        CommandParameter="{Binding ElementName=window}" HorizontalAlignment="Center" Width="300" Margin="0,10,0,10" Visibility="{Binding ShowProgress1}"
+                        />
+                </Grid>-->
+                <Button Content="Enter" Grid.Row="4" Height="40" Template="{StaticResource LoginButtonTemplate}"
+                        Command="{Binding LoginCommand1}"
+                        CommandParameter="{Binding ElementName=window}" HorizontalAlignment="Center" Width="100" Margin="0,10,0,10" Visibility="{Binding ShowProgress1}"
+                        />
+                    
+                
+                <TextBlock Text="Version 1.0" FontWeight="UltraBold" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0.4,-131.2"/>
 
             </Grid>
 

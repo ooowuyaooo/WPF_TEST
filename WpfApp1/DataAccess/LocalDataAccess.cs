@@ -73,7 +73,8 @@ namespace WpfApp1.DataAccess
             try {
                 if (DBConnection())
                 {
-                    string userSql = "select * from users where user_name=@username ";
+                    string userSql = "select * from ESOP where WI_number=@username";
+                    
                     adapter = new MySqlDataAdapter(userSql, conn);
                     adapter.SelectCommand.Parameters.Add(new MySqlParameter("@username", MySqlDbType.VarChar)
                     {
@@ -99,9 +100,13 @@ namespace WpfApp1.DataAccess
 
 
                     UserEntity userInfo = new UserEntity();
-                    userInfo.UserName = dr.Field<string>("user_name");
-                    //userInfo.RealName = dr.Field<string>("real_name");
-                    //userInfo.Password = dr.Field<string>("password");
+                    userInfo.UserName = dr.Field<string>("WI_number");
+                    userInfo.RealName = dr.Field<string>("description");
+                    userInfo.Password = dr.Field<string>("PDF_1");
+                    userInfo.Password1 = dr.Field<string>("PDF_2");
+                    userInfo.Password2 = dr.Field<string>("PDF_3");
+                    userInfo.Password3 = dr.Field<string>("PDF_4");
+                    userInfo.Password4 = dr.Field<string>("PDF_5");
                     //userInfo.UserName = "admin";
                     //userInfo.RealName = "EdisZhang";
                     //userInfo.Password = "123456";

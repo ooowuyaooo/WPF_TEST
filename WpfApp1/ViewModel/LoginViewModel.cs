@@ -16,9 +16,9 @@ namespace WpfApp1.ViewModel
         public CommandBase CloseWindowCommand { get; set; }
 
         public CommandBase LoginCommand { get; set; }
-
+        public CommandBase LoginCommand1 { get; set; }
         private string _errorMessage;
-
+        
 
 
         private Visibility _showProgress;
@@ -31,9 +31,20 @@ namespace WpfApp1.ViewModel
                 this.DoNotify();
             }
         }
-        
 
-        
+        private Visibility _showProgress1;
+        public Visibility ShowProgress1
+        {
+            get { return _showProgress1; }
+            set
+            {
+                _showProgress1 = value;
+                this.DoNotify();
+            }
+        }
+
+
+
 
         public string ErrorMessage
         {
@@ -45,6 +56,7 @@ namespace WpfApp1.ViewModel
         public LoginViewModel()
         {
             this.ShowProgress = Visibility.Hidden;
+            this.ShowProgress1 = Visibility.Hidden;
             //this.LoginModel = new LoginModel();
             //this.LoginModel.UserName = "Jovan";
             //this.LoginModel.Password = "123123";
@@ -57,6 +69,12 @@ namespace WpfApp1.ViewModel
             this.LoginCommand = new CommandBase();
             this.LoginCommand.DoExcute = new Action<object>(DoLogin);
             this.LoginCommand.DoCanExcute = new Func<object, bool>((o) => { return true; });
+
+            this.LoginCommand1 = new CommandBase();
+            this.LoginCommand1.DoExcute = new Action<object>(DoLogin1);
+            this.LoginCommand1.DoCanExcute = new Func<object, bool>((o) => { return true; });
+
+            
         }
 
         private void DoLogin(object o)
@@ -69,6 +87,7 @@ namespace WpfApp1.ViewModel
                 this.ShowProgress = Visibility.Collapsed;
                 return;
             }
+           
             
             //if (string.IsNullOrEmpty(LoginModel.Password))
             //{
@@ -95,25 +114,57 @@ namespace WpfApp1.ViewModel
                 var user = LocalDataAccess.GetInstance().CheckUserInfo(LoginModel.UserName);
                 if (user == null)
                 {
-                    throw new Exception("登陆失败，账户密码不正确！");
+                    throw new Exception("查询失败，检查网络通讯！！");
 
                 }
 
                 GlobalValues.UserInfo = user;
-                Application.Current.Dispatcher.Invoke(new Action(() =>
-                    {
-                        (o as Window).DialogResult = true;
-                    }));
+
+                    this.ErrorMessage = GlobalValues.UserInfo.RealName.ToString();
+                    this.ShowProgress1 = Visibility.Visible;
+                    
+
+
+                    //Application.Current.Dispatcher.Invoke(new Action(() =>
+                    //    {
+                    //        (o as Window).DialogResult = true;
+                    //    }));
 
 
 
-            }
+                }
             catch(Exception ex)
             {
                 this.ErrorMessage = ex.Message;
                 }
             }));
+            
+
+            
         }
+        private void DoLogin1(object o)
+        {
+            
+            Task.Run(new Action(() => {
+                try
+                {
+
+                    Application.Current.Dispatcher.Invoke(new Action(() =>
+                        {
+                            (o as Window).DialogResult = true;
+                        }));
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    this.ErrorMessage = ex.Message;
+                }
+            }));
+        }
+
+
     }
 
 
