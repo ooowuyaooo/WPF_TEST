@@ -35,9 +35,14 @@ namespace WpfApp1.View
             this.WindowState = WindowState.Maximized;
             this.MaxHeight = SystemParameters.PrimaryScreenHeight;
 
-            
+
+           
+
 
         }
+
+        
+        
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -63,13 +68,15 @@ namespace WpfApp1.View
             LoginView a = new LoginView();
             
             a.ShowDialog();
+
+            MessageBox.Show("文档已更新！！！Documents updated!!!");
             FileButton_Click(sender, e);
             FileButton_Click1(sender, e);
             FileButton_Click5(sender, e);
             FileButton_Click6(sender, e);
             FileButton_Click7(sender, e);
 
-
+            
 
 
         }
@@ -109,7 +116,7 @@ namespace WpfApp1.View
 
             //string filePath = "F://Csharp_projects/pdfreader/1.pdf";
             string filePath = GlobalValues.UserInfo.Password.ToString();
-
+            
             try
             {
                 moonPdfPanel.OpenFile(filePath);
@@ -118,7 +125,7 @@ namespace WpfApp1.View
             catch (Exception)
             {
                 _isLoaded = false;
-                MessageBox.Show("找不到该文件，请问工艺工程师！！");
+                MessageBox.Show("找不到该文件1，请问工艺工程师！！");
             }
 
 
@@ -139,7 +146,7 @@ namespace WpfApp1.View
             catch (Exception)
             {
                 _isLoaded = false;
-                MessageBox.Show("找不到该文件，请问工艺工程师！！");
+                MessageBox.Show("找不到该文件2，请问工艺工程师！！");
             }
 
 
@@ -160,7 +167,7 @@ namespace WpfApp1.View
             catch (Exception)
             {
                 _isLoaded = false;
-                MessageBox.Show("找不到该文件，请问工艺工程师！！");
+                MessageBox.Show("找不到该文件3，请问工艺工程师！！");
             }
 
 
@@ -181,7 +188,7 @@ namespace WpfApp1.View
             catch (Exception)
             {
                 _isLoaded = false;
-                MessageBox.Show("找不到该文件，请问工艺工程师！！");
+                MessageBox.Show("找不到该文件4，请问工艺工程师！！");
             }
 
 
@@ -202,7 +209,7 @@ namespace WpfApp1.View
             catch (Exception)
             {
                 _isLoaded = false;
-                MessageBox.Show("找不到该文件，请问工艺工程师！！");
+                MessageBox.Show("找不到该文件5，请问工艺工程师！！");
             }
 
 

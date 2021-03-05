@@ -19,6 +19,15 @@ namespace WpfApp1.ViewModel
         private string _searchText;
 
 
+        private string myVar;
+
+        public string MyProperty
+        {
+            get { return myVar; }
+            set { myVar = value; }
+        }
+
+
         public CommandBase CloseWindowCommand { get; set; }
 
         public string SearchText
@@ -44,9 +53,10 @@ namespace WpfApp1.ViewModel
             this.NavChangedCommand.DoCanExcute= new Func<object,bool>((o)=>true);
 
             //DoNavChanged("FirstPageView");  //直接打开首页
+            //MyProperty = GlobalValues.UserInfo.RealName.ToString();
 
 
-           
+
         }
 
         private void DoNavChanged(object obj)

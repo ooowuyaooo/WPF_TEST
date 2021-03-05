@@ -83,6 +83,7 @@ namespace WpfApp1.ViewModel
             this.ErrorMessage = "查询中.....";
             if (string.IsNullOrEmpty(LoginModel.UserName))
             {
+                
                 this.ErrorMessage = "找不到产品号码，请联系工艺工程师！！！";
                 this.ShowProgress = Visibility.Collapsed;
                 return;
@@ -122,6 +123,7 @@ namespace WpfApp1.ViewModel
 
                     this.ErrorMessage = GlobalValues.UserInfo.RealName.ToString();
                     this.ShowProgress1 = Visibility.Visible;
+
                     
 
 

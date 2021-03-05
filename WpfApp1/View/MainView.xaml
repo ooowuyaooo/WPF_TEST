@@ -13,6 +13,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -22,7 +23,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Orientation="Horizontal" Width="auto" Grid.ColumnSpan="2" Margin="0,0,297.6,-0.4">
+            <StackPanel Orientation="Horizontal" Width="auto" Grid.ColumnSpan="2" >
                 <Button Content="图纸" Width="75" Height="50" Click="FileButton_Click" Margin="10,10"/>
                 <Button Content="作业指导书" Width="75" Height="50" Click="FileButton_Click1" Margin="10,10"/>
                 <Button Content="工装组图" Width="75" Height="50" Click="FileButton_Click5" Margin="10,10"/>
@@ -45,7 +46,12 @@
 
         </Grid>
 
-        <Border Background="#d3d3d3" Grid.Row="1">
+        <!--<StackPanel Grid.Row="1" Background="White" Orientation="Horizontal">
+            <TextBox Text="当前产品号码:"/>
+            <TextBlock Width="200" Text="{Binding MyProperty}"/>
+        </StackPanel>-->
+
+        <Border Background="#d3d3d3" Grid.Row="2">
             <mpp:MoonPdfPanel x:Name="moonPdfPanel" Background="LightGray" ViewType="SinglePage" PageRowDisplay="ContinuousPageRows" PageMargin="0,2,4,2" AllowDrop="True"/>
         </Border>
     </Grid>

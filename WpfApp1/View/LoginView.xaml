@@ -310,9 +310,9 @@
 
 
             <StackPanel VerticalAlignment="top" HorizontalAlignment="Left" Margin="0,0,0,20" >
-                <Border Width="450" Height="80" Margin="0,0,0,10" CornerRadius="10,10,10,10">
+                <Border Width="492" Height="129" Margin="0,0,0,10" CornerRadius="10,10,10,10">
                     <Border.Background>
-                        <ImageBrush ImageSource="../Asset/images/bonfigloili_logo.png"/>
+                        <ImageBrush ImageSource="../Asset/images/Bonfiglioli.jpg"/>
                     </Border.Background>
                 </Border>
 
